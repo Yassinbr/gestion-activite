@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CHATBOT.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///r%3A/2.Travail/1.Enseignement/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css"><link rel="stylesheet" href="file:///d%3A/rdaros/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="chatbot-cohere--documentation">Chatbot (Cohere) — Documentation</h1>
+<p>Ce document décrit en détail le chatbot intégré à l'application Qt (dialog <code>ChatbotDialog</code>). Il explique l'architecture, les fichiers sources, les dépendances, les variables d'environnement requises, le format des requêtes/réponses, la gestion d'erreurs et des conseils pour le débogage.</p>
+<h2 id="r%C3%A9sum%C3%A9">Résumé</h2>
+<ul>
+<li><strong>But</strong>: Fournir une interface de chat simple utilisant l'API Cohere pour générer des réponses textuelles.</li>
+<li><strong>Emplacement du code</strong>: les fichiers principaux sont <code>chatbot.h</code> et <code>chatbot.cpp</code> (nouveau dialog), avec des stubs allégés dans <code>openai_chatbot.h</code> / <code>openai_chatbot.cpp</code> pour compatibilité.</li>
+<li><strong>Endpoint utilisé</strong>: <code>https://api.cohere.ai/v1/chat</code>.</li>
+<li><strong>Sécurité</strong>: la clé API n'est pas en dur dans le code. Utiliser la variable d'environnement <code>COHERE_API_KEY</code>.</li>
+</ul>
+<h2 id="fichiers-cl%C3%A9s">Fichiers clés</h2>
+<ul>
+<li><code>chatbot.h</code> : déclaration du <code>ChatbotDialog</code> (QDialog). UI minimale (zone d'affichage, champ d'entrée, bouton envoyer, bouton effacer).</li>
+<li><code>chatbot.cpp</code> : implémentation de la UI, envoi de requêtes via <code>QNetworkAccessManager</code>, parsing des réponses, et gestion d'erreurs.</li>
+<li><code>fournisseur.cpp</code> : point d'intégration du bouton qui ouvre le <code>ChatbotDialog</code> (par ex. <code>connect(ui-&gt;chabot, &amp;QPushButton::clicked, ...)</code>).</li>
+<li><code>openai_chatbot.h</code>, <code>openai_chatbot.cpp</code> : versions stubs (remplacées pour enlever le heavy system prompt et le CRUD complexe).</li>
+<li><code>interface.pro</code> : ajoute <code>network</code> et <code>printsupport</code> ; contient <code>SOURCES</code>/<code>HEADERS</code> nécessaires.</li>
+</ul>
+<h2 id="comment-%C3%A7a-marche-flux">Comment ça marche (flux)</h2>
+<ol>
+<li>L'utilisateur ouvre le dialogue de chat (bouton dans l'UI principale).</li>
+<li><code>ChatbotDialog</code> construit le message de l'utilisateur et appelle <code>onSendClicked()</code>.</li>
+<li><code>onSendClicked()</code> lit la clé via <code>QProcessEnvironment::systemEnvironment()</code> (<code>COHERE_API_KEY</code>) et le modèle (optionnel via <code>COHERE_MODEL</code>, sinon valeur par défaut).</li>
+<li>Le dialog envoie une requête POST JSON à <code>https://api.cohere.ai/v1/chat</code> avec les en-têtes:
+<ul>
+<li><code>Authorization: Bearer &lt;COHERE_API_KEY&gt;</code></li>
+<li><code>Content-Type: application/json</code></li>
+<li><code>Cohere-Version: 2022-12-06</code> (ajouté par le client)</li>
+</ul>
+</li>
+<li>Le serveur Cohere répond. Le code gère plusieurs formes de réponse (voir section suivante).</li>
+<li>La réponse est affichée dans la zone de chat; en cas d'erreur le dialog affiche un message explicite (statut HTTP, message serveur, conseils).</li>
+</ol>
+<h2 id="variables-denvironnement">Variables d'environnement</h2>
+<ul>
+<li><code>COHERE_API_KEY</code> : <strong>obligatoire</strong>. Clé API Cohere (ne jamais la committer).</li>
+<li><code>COHERE_MODEL</code> : optionnel. Nom du modèle Cohere à utiliser. Si absent, le code utilise <code>command-a-03-2025</code> par défaut.</li>
+</ul>
+<p>Exemples (PowerShell temporaire pour lancer l'application) :</p>
+<pre class="hljs"><code><div><span class="hljs-variable">$Env:COHERE_API_KEY</span> = <span class="hljs-string">"&lt;VOTRE_CLE_COHERE&gt;"</span>
+<span class="hljs-variable">$Env:COHERE_MODEL</span> = <span class="hljs-string">"command-a-03-2025"</span> <span class="hljs-comment"># optionnel</span>
+qmake
+mingw32<span class="hljs-literal">-make</span>
+</div></code></pre>
+<p>Pour définir la variable de façon persistante sous Windows (PowerShell) :</p>
+<pre class="hljs"><code><div>setx COHERE_API_KEY <span class="hljs-string">"&lt;VOTRE_CLE_COHERE&gt;"</span>
+setx COHERE_MODEL <span class="hljs-string">"command-a-03-2025"</span>
+<span class="hljs-comment"># Fermer/re-ouvrir la session pour que setx prenne effet.</span>
+</div></code></pre>
+<h2 id="format-de-requ%C3%AAte-envoy%C3%A9-json">Format de requête envoyé (JSON)</h2>
+<p>Exemple de corps JSON envoyé au endpoint <code>/v1/chat</code> :</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"model"</span>: <span class="hljs-string">"command-a-03-2025"</span>,
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Bonjour, pouvez-vous me donner un résumé ?"</span>,
+  <span class="hljs-attr">"max_tokens"</span>: <span class="hljs-number">150</span>,
+  <span class="hljs-attr">"temperature"</span>: <span class="hljs-number">0.6</span>
+}
+</div></code></pre>
+<p>(Remarques : le nom exact du champ et du format dépend de l'implémentation dans <code>chatbot.cpp</code>. L'implémentation actuelle envoie <code>model</code> et <code>message</code> avec quelques options.)</p>
+<h2 id="formes-de-r%C3%A9ponse-et-parsing">Formes de réponse et parsing</h2>
+<p>Cohere peut renvoyer différentes formes JSON selon l'endpoint/version :</p>
+<ul>
+<li>Ancienne forme <code>generations</code> : tableau de générations contenant le texte.</li>
+<li>Nouvelle forme <code>message</code> : objet contenant <code>content</code> (ou <code>message.content</code> selon version).</li>
+<li>Parfois <code>text</code> ou <code>outputs</code> peuvent apparaître.</li>
+</ul>
+<p>Le code de <code>chatbot.cpp</code> tente d'extraire la réponse en essayant dans l'ordre commun :</p>
+<ol>
+<li><code>generations</code> → extraire le premier <code>text</code>.</li>
+<li><code>message.content</code> → agréger contenu (si présent).</li>
+<li><code>text</code> ou <code>outputs</code> comme fallback.</li>
+<li>Sinon, afficher le corps brut renvoyé (pour faciliter le debug).</li>
+</ol>
+<h2 id="gestion-derreurs">Gestion d'erreurs</h2>
+<ul>
+<li>Si la réponse HTTP a un code &gt;= 400, le dialog affiche le code et tente d'extraire un champ <code>message</code> dans le JSON retourné par le serveur.</li>
+<li>Cas fréquent : <code>404 model not found</code> → message serveur indiquant que le modèle demandé n'est pas accessible pour le compte. Le dialog propose alors :
+<ul>
+<li>vérifier <code>COHERE_MODEL</code>,</li>
+<li>utiliser le modèle par défaut (<code>command-a-03-2025</code>),</li>
+<li>ou vérifier les permissions/accès au modèle dans le dashboard Cohere.</li>
+</ul>
+</li>
+<li>Si <code>COHERE_API_KEY</code> est absent, une boîte de dialogue prévient l'utilisateur et l'envoi est annulé.</li>
+</ul>
+<h2 id="d%C3%A9bogage-et-inspection">Débogage et inspection</h2>
+<ul>
+<li>Pour voir la requête/réponse exacte, vous pouvez ajouter des logs temporaires dans <code>chatbot.cpp</code> :
+<ul>
+<li><code>qDebug()</code> du JSON envoyé et du texte reçu (après <code>reply-&gt;readAll()</code>).</li>
+</ul>
+</li>
+<li>Vérifier le code HTTP retourné (<code>reply-&gt;attribute(QNetworkRequest::HttpStatusCodeAttribute)</code>).</li>
+<li>Si vous obtenez des erreurs réseau répétées, vérifier :
+<ul>
+<li>variables d'environnement</li>
+<li>accès Internet depuis l'application (firewall)</li>
+<li>si le endpoint attendu <code>https://api.cohere.ai/v1/chat</code> n'a pas changé</li>
+</ul>
+</li>
+</ul>
+<h2 id="construction--ex%C3%A9cution-rappel">Construction / Exécution (rappel)</h2>
+<ul>
+<li>Re-générer le Makefile et builder :</li>
+</ul>
+<pre class="hljs"><code><div>qmake
+mingw32<span class="hljs-literal">-make</span>
+</div></code></pre>
+<ul>
+<li>Lancer l'exécutable généré depuis l'IDE ou l'explorateur.</li>
+</ul>
+<h2 id="conseils-dam%C3%A9lioration">Conseils d'amélioration</h2>
+<ul>
+<li>Ajouter une sélection de modèle en UI (<code>QComboBox</code>) qui écrit <code>COHERE_MODEL</code> dans un fichier de config ou <code>QSettings</code>.</li>
+<li>Remplacer l'ajout de la ligne « Réponse en cours... » par un indicateur d'état unique (barre de progression ou label) pour éviter d'encombrer la zone de chat.</li>
+<li>Supporter la pagination/scroll asynchrone si les réponses sont longues.</li>
+<li>Ajouter une option pour sauvegarder l'historique de chat localement.</li>
+</ul>
+<h2 id="foire-aux-questions-faq-rapide">Foire aux questions (FAQ rapide)</h2>
+<ul>
+<li>
+<p>Q : J'ai <code>model not found</code> — que faire ?</p>
+<ul>
+<li>A : Assurez-vous que <code>COHERE_MODEL</code> est défini sur un modèle auquel votre compte a accès (par ex. <code>command-a-03-2025</code> ou <code>command-r7b-12-2024</code>). Sinon, retirez la variable pour utiliser la valeur par défaut.</li>
+</ul>
+</li>
+<li>
+<p>Q : Comment éviter d'exposer la clé ?</p>
+<ul>
+<li>A : Ne commitez jamais <code>COHERE_API_KEY</code>. Utilisez les variables d'environnement ou un store de secrets. En production, utilisez un backend pour proxyfier les requêtes et masquer la clé côté serveur.</li>
+</ul>
+</li>
+</ul>
+<h2 id="questions--prochaines-%C3%A9tapes">Questions / prochaines étapes</h2>
+<ul>
+<li>Voulez-vous que j'ajoute une UI pour sélectionner le modèle et sauvegarder le choix ?</li>
+<li>Voulez-vous que j'ajoute du logging (fichier) pour les requêtes/réponses lors du debug ?</li>
+</ul>
+<hr>
+<p>Fichier créé : <code>CHATBOT.md</code> (à la racine du repo). Si vous souhaitez que je mette ce fichier dans un dossier <code>docs/</code>, dites-le et je le déplacerai.</p>
+
+</body>
+
+</html>
