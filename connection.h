@@ -2,17 +2,15 @@
 #define CONNECTION_H
 
 #include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QDebug>
-#include <QMessageBox>
 
 class Connection
 {
+private:
+    QSqlDatabase db;
+
 public:
     Connection();
     bool createconnect();
-    bool testerRequete();
 };
 
 #endif // CONNECTION_H
